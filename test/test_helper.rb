@@ -11,4 +11,6 @@ require_relative '../lib/store'
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'pry'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 Minitest::Reporters.use!(Minitest::Reporters::MeanTimeReporter.new({ color: true }))
