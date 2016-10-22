@@ -10,7 +10,7 @@ class PricingRule
     !line_items[code].nil?
   end
 
-  def apply(line_items = {})
+  def apply(_line_items = {})
     0.0
   end
 

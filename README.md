@@ -1,4 +1,7 @@
 # CheckoutStore
+[![Build Status](https://travis-ci.org/danielRomero/checkout_store.svg?branch=master)](https://travis-ci.org/danielRomero/checkout_store)
+[![Code Climate](https://codeclimate.com/github/danielRomero/checkout_store/badges/gpa.svg)](https://codeclimate.com/github/danielRomero/checkout_store)
+[![Test Coverage](https://codeclimate.com/github/danielRomero/checkout_store/badges/coverage.svg)](https://codeclimate.com/github/danielRomero/checkout_store/coverage)
 
 Exercise for a checkout process
 
@@ -14,9 +17,10 @@ Clone the repo and then execute
 
 Run tests with
 
-    ```ruby
-    rake test
-    ```
+``` ruby
+rake test
+```
+
 ## Usage
 
 - More products can be added on `products.yml` at resources folder.
