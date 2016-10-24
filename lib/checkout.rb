@@ -1,4 +1,5 @@
 require_relative 'line_item'
+require_relative 'price_formatter'
 
 class Checkout
   attr_reader :pricing_rules
@@ -22,17 +23,11 @@ class Checkout
   end
 
   def total
-    total_before_discounts = 0
-    line_items.values.each do |line_item|
-      total_before_discounts += line_item.product.price * line_item.quantity
-    end
+    total_before_discounts = line_items.values.inject(0){ |total, li| total + li.quantity * li.product.price }
 
-    total_after_discounts = total_before_discounts
-
-    pricing_rules.each do |pricing_rule|
-      total_after_discounts +=
-        pricing_rule.apply line_items if pricing_rule.must_apply?(line_items)
-    end
-    format('%.2f€', total_after_discounts)
+    total_after_discounts = pricing_rules.inject(total_before_discounts){ |total, pricing_rule|
+      total +( pricing_rule.must_apply?(line_items) ? pricing_rule.apply(line_items) : 0)
+    }
+    PriceFormatter.to_euro(total_after_discounts)
   end
 end

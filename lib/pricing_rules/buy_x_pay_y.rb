@@ -21,7 +21,6 @@ class BuyXPayY < PricingRule
   def validate
     raise ArgumentError, 'buy_units cant be empty' if buy_units.nil?
     raise ArgumentError, 'buy_units must be a number' unless buy_units.kind_of?(Integer)
-
     raise ArgumentError, 'pay_units cant be empty' if pay_units.nil?
     raise ArgumentError, 'pay_units must be a number' unless pay_units.kind_of?(Integer)
     super
