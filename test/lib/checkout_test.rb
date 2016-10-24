@@ -22,11 +22,11 @@ describe Checkout do
     end
 
     it 'cant find product on store' do
-      @checkout.scan('NOTFOUND').must_equal 'product not found'
+      @checkout.scan('NOTFOUND').must_equal nil
     end
 
     it 'find product on store' do
-      @checkout.scan('VOUCHER').must_be_instance_of Product
+      @checkout.scan('VOUCHER').must_be_instance_of LineItem
     end
 
     it 'Items: VOUCHER, TSHIRT, MUG. Total: 32.50' do
