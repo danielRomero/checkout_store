@@ -11,15 +11,9 @@ class Checkout
 
   def scan(product_code)
     product = Store.find_product_by_code product_code
-    if product
-      if line_items[product.code].nil?
-        line_items[product.code] = LineItem.new(product: product)
-      else
-        line_items[product.code].quantity += 1
-      end
-    else
-      puts 'product not found'
-    end
+    puts 'product not found' && return unless product
+    return line_items[product.code] = LineItem.new(product: product) if line_items[product.code].nil?
+    line_items[product.code].quantity += 1
   end
 
   def total
